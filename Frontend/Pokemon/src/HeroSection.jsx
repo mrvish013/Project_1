@@ -12,7 +12,7 @@ function HeroSection() {
             sx={{
                 backgroundColor: "#fff",
                 backgroundImage: `url(${heroimg})`,
-                backgroundSize: isMobile ? "cover" : "600px", 
+                backgroundSize: isMobile ? "cover" : "600px",
                 backgroundPosition: "right center",
                 backgroundRepeat: "no-repeat",
                 minHeight: "100vh",
@@ -30,24 +30,28 @@ function HeroSection() {
                     textAlign: { xs: "center", md: "left" },
                 }}
             >
-                <Typography
-                    variant="h2"
-                    component="h1"
+                <Box
                     sx={{
-                        fontWeight: "bold",
-                        fontSize: { xs: "36px", sm: "44px", md: "64px" },
-                        letterSpacing: 1,
-                        mb: 3,
-                        lineHeight: 1.2,
-                        whiteSpace: "nowrap",
+                        maxWidth: { xs: "100%", md: "100%", lg: "70%" }
                     }}
                 >
-                    Let's Dive in{" "}
-                    <Box component="span" sx={{ color: "darkorange" }}>
-                        Music
-                    </Box>{" "}
-                    World
-                </Typography>
+                    <Typography
+                        variant="h2"
+                        sx={{
+                            fontWeight: "bold",
+                            fontSize: { xs: "36px", sm: "44px", md: "64px" },
+                            letterSpacing: 1,
+                            mb: 3,
+                            lineHeight: 1.2,
+                        }}
+                    >
+                        Let's Dive in{" "}
+                        <Box component="span" sx={{ color: "darkorange" }}>
+                            Music
+                        </Box>{" "}
+                        World
+                    </Typography>
+                </Box>
 
                 <Typography
                     variant="body2"
@@ -76,7 +80,7 @@ function HeroSection() {
                     <Button
                         variant="contained"
                         color="primary"
-                        sx={{ borderRadius: 3, height:50, width: 160, border:"3px solid #F14A16", fontWeight:"600", color:"white"}}
+                        sx={{ borderRadius: 3, height: 50, width: 160, border: "3px solid #F14A16", fontWeight: "600", color: "white" }}
                     >
                         Shop Now
                     </Button>
@@ -84,7 +88,7 @@ function HeroSection() {
                         variant="outlined"
                         color="primary"
                         startIcon={<ShoppingCartIcon />}
-                        sx={{ borderRadius: 3, height:50, width: 160, border:"3px solid"}}
+                        sx={{ borderRadius: 3, height: 50, width: 160, border: "3px solid" }}
                     >
                         Add to Cart
                     </Button>
