@@ -1,4 +1,13 @@
-import { Box, Button, Typography, Stack, useTheme, useMediaQuery, Card, CardContent } from "@mui/material";
+import {
+    Box,
+    Button,
+    Typography,
+    Stack,
+    useTheme,
+    useMediaQuery,
+    Card,
+    CardContent
+} from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import heroimg from "./assets/Hero.png";
 import headphone from "./assets/headphone.png";
@@ -10,18 +19,19 @@ function HeroSection() {
     return (
         <Box
             sx={{
-                backgroundColor: "#fff",
                 backgroundImage: `url(${heroimg})`,
                 backgroundSize: isMobile ? "cover" : "600px",
                 backgroundPosition: "right center",
                 backgroundRepeat: "no-repeat",
                 minHeight: "100vh",
-                mt: { xs: -2, md: -20 },
+                mt: { xs: 5, md: -20 },
                 px: { xs: 2, md: 10 },
-                pt: { xs: 14, sm: 0, md: 20, lg: 0 },
+                pt: { xs: 0, sm: 0, md: 30, lg: 4 },
+                pb: 10,
                 display: "flex",
+                flexDirection: { xs: "column", md: "row" },
                 alignItems: "center",
-                justifyContent: "flex-start",
+                justifyContent: "space-between",
             }}
         >
             <Box
@@ -77,40 +87,35 @@ function HeroSection() {
                     justifyContent={{ xs: "center", md: "flex-start" }}
                     alignItems="center"
                 >
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        sx={{ borderRadius: 3, height: 50, width: 160, border: "3px solid #F14A16", fontWeight: "600", color: "white" }}
-                    >
-                        Shop Now
-                    </Button>
-                    <Button
-                        variant="outlined"
-                        color="primary"
-                        startIcon={<ShoppingCartIcon />}
-                        sx={{ borderRadius: 3, height: 50, width: 160, border: "3px solid" }}
-                    >
+                    <Button variant="contained" startIcon={<ShoppingCartIcon />} color="primary">
                         Add to Cart
+                    </Button>
+
+                    <Button variant="outlined" color="primary">
+                        Buy Now
                     </Button>
                 </Stack>
             </Box>
 
-            <Box sx={{
-                display: "flex",
-                gap: 2,
-                position: "absolute",
-                bottom: 70,
-                right: 10,
-            }}>
+            <Box
+                sx={{
+                    display: "flex",
+                    flexDirection: { xs: "column", sm: "row" },
+                    gap: 2,
+                    alignItems: "center",
+                    justifyContent: "center",
+                    mt: { xs: 15, md: 70 },
+                    width: { xs: "100%", md: "auto" },
+                }}
+            >
                 {[1, 2, 3].map((_, index) => (
                     <Card
                         key={index}
                         sx={{
-                            maxWidth: "300px",
+                            maxWidth: 300,
                             borderRadius: 4,
-                            height: "180px",
-                            background: "linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.7))",
-                            position: "relative",
+                            height: 180,
+                            background: "linear-gradient(to bottom, #FFFFFFB2,#FFFFFF1A)", position: "relative",
                             overflow: "visible",
                             pt: 10,
                         }}
@@ -121,20 +126,44 @@ function HeroSection() {
                                 alt=""
                                 style={{
                                     position: "absolute",
-                                    top: "-60px", // Adjusted positioning for better visuals
+                                    top: "-60px",
                                     left: "50%",
                                     transform: "translateX(-50%)",
-                                    width: "110px", // Balanced size
+                                    width: "110px",
                                 }}
                             />
-                            <Typography gutterBottom variant="h5" component="div">
+                            <Typography
+                                gutterBottom
+                                variant="body1"
+                                fontWeight={"500"}
+                                component="div"
+                                align="center"
+                            >
                                 Wireless Headphone
                             </Typography>
-                            <Box sx={{ display: "flex", alignItems: "center", justifyContent: "start", gap: 2 }}>
-                                <Typography variant="body2" color="text.secondary" sx={{ fontSize: "20px", fontWeight: "bold" }}>
+                            <Box
+                                sx={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    gap: 2,
+                                }}
+                            >
+                                <Typography
+                                    variant="body2"
+                                    color="text.secondary"
+                                    sx={{ fontSize: "20px", fontWeight: "bold" }}
+                                >
                                     $120
                                 </Typography>
-                                <Typography variant="body1" color="text.primary" sx={{ fontSize: "13px", textDecoration: "line-through" }}>
+                                <Typography
+                                    variant="body1"
+                                    color="text.primary"
+                                    sx={{
+                                        fontSize: "13px",
+                                        textDecoration: "line-through",
+                                    }}
+                                >
                                     $180
                                 </Typography>
                             </Box>

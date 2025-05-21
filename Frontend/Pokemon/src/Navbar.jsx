@@ -8,16 +8,9 @@ import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import logo from "./assets/Logo.png";
 
-function Navbar() {
+function Navbar({ onToggleTheme, isDarkMode, onScrolltoExplore,onScrolltoContactUs , onScrolltohome}) {
     return (
-        <AppBar
-            position="static"
-            sx={{
-                backgroundColor: "#fff",
-                color: "#000",
-                boxShadow: "none",
-            }}
-        >
+        <AppBar position="static" sx={{ backgroundColor: "background.paper", color: "text.primary", boxShadow: "none" }}>
             <Toolbar
                 sx={{
                     display: "flex",
@@ -28,58 +21,38 @@ function Navbar() {
                     gap: { xs: 2, md: 0 },
                 }}
             >
-                <Box
-                    component="img"
-                    src={logo}
-                    alt="Logo"
-                    sx={{
-                        width: { xs: "100px", md: "120px" },
-                        mb: { xs: -2, md: 0 },
-                    }}
-                />
+                <Box component="img" src={logo} alt="Logo" sx={{ width: { xs: "100px", md: "120px" }, mb: { xs: -2, md: 0 } }} />
 
-                <Stack
-                    direction="row"
-                    spacing={{ xs: 3, md: 5 }}
-                    sx={{ flexWrap: "wrap", justifyContent: "center" }}
-                >
-                    {["Home", "Explore", "Contact Us"].map(text => (
-                        <Button key={text} sx={{ color: "#000", fontWeight: 500 }}>
-                            {text}
-                        </Button>
-                    ))}
+                <Stack direction="row" spacing={{ xs: 3, md: 5 }} sx={{ flexWrap: "wrap", justifyContent: "center" }}>
+
+                    <Button onClick={onScrolltohome} sx={{ color: "text.primary", fontWeight: 500, fontSize: 17 }}>
+                        Home
+                    </Button>
+                    <Button onClick={onScrolltoExplore} sx={{ color: "text.primary", fontWeight: 500, fontSize: 17 }}>
+                        Explore
+                    </Button>
+                    <Button onClick={onScrolltoContactUs} sx={{ color: "text.primary", fontWeight: 500, fontSize: 17 }}>
+                        Contact Us
+                    </Button>
+
                 </Stack>
 
-                <Box
-                    sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: { xs: 1, md: 2 },
-                        flexWrap: "wrap",
-                    }}
-                >
+                <Box sx={{ display: "flex", alignItems: "center", gap: { xs: 1, md: 2 }, flexWrap: "wrap" }}>
                     <Chip
+                        onClick={onToggleTheme}
+                        clickable
                         variant="outlined"
                         label={
                             <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                                <LightModeIcon fontSize="small" />
-                                <DarkModeIcon fontSize="small" />
+                                {isDarkMode ? <LightModeIcon fontSize="small" /> : <DarkModeIcon fontSize="small" />}
                             </Box>
                         }
-                        sx={{ height: "32px" }}
+                        sx={{ height: "32px", cursor: "pointer" }}
                     />
 
-                    <IconButton sx={{ color: "black" }}>
-                        <SearchIcon />
-                    </IconButton>
-                    <IconButton sx={{ color: "black" }}>
-                        <ShoppingCartIcon />
-                    </IconButton>
-                    <Button
-                        variant="outlined"
-                        color="primary"
-                        sx={{ borderRadius: 3,border:"2px solid #F14A16",fontWeight:"600", width:"100px",height:"40px",fontSize: "13px",  }}
-                    >
+                    <IconButton sx={{ color: "text.primary" }}><SearchIcon /></IconButton>
+                    <IconButton sx={{ color: "text.primary" }}><ShoppingCartIcon /></IconButton>
+                    <Button variant="outlined" color="primary" sx={{ borderRadius: 3, fontWeight: 600 }}>
                         Login
                     </Button>
                 </Box>
@@ -87,5 +60,4 @@ function Navbar() {
         </AppBar>
     );
 }
-
 export default Navbar;

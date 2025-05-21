@@ -18,11 +18,11 @@ function Offer() {
         color: "white",
     };
     return (
-        <Box m={10}>
+        <Box my={10}>
             <Box
                 mx={"auto"}
                 textAlign={"center"}
-                width={"70%"}
+                width={{ xs: "95%", md: "85%" }}
                 mt={10}
                 sx={{
                     background: "linear-gradient(90deg, rgba(55, 6, 101, 1) 0%, rgba(53, 88, 154, 1) 100%)",
@@ -31,38 +31,39 @@ function Offer() {
                 }}
             >
                 <Typography variant="h4" color="secondary" letterSpacing={1} sx={{ wordSpacing: 5 }}>Why directly buy from Musify?</Typography>
-                <Stack direction="row" mt={4} flexWrap={"wrap"} spacing={15} color={"white"} alignItems="center" justifyContent={"center"}>
+                <Stack direction={{ md: "column", lg: "row" }} mt={3} flexWrap={"wrap"} spacing={{ xs: 2, md: 5 }} color={"white"} alignItems="center" justifyContent={"space-evenly"} >
 
-                    <Box sx={{ display: "flex", alignItems: "center", gap: 3 }}>
-                        <LocalShippingIcon sx={{ fontSize: "45px" }} />
-                        <Typography variant="body1" fontSize={23} fontWeight="100">Free Delivery</Typography>
+                    <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 2 }}>
+                        <LocalShippingIcon sx={{ fontSize: { xs: 24, sm: 30, md: 45 } }} />
+                        <Typography variant="body1" fontSize={{ xs: 18, sm: 20, md: 23 }} fontWeight="100">Free Delivery</Typography>
                     </Box>
 
-                    <Box sx={{ display: "flex", alignItems: "center", gap: 3 }}>
-                        <VerifiedIcon sx={{ fontSize: "45px" }} />
-                        <Typography variant="body1" fontSize={23} fontWeight="100">Verified Quality</Typography>
+                    <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+                        <VerifiedIcon sx={{ fontSize: { xs: 24, sm: 30, md: 45 } }} />
+                        <Typography variant="body1" fontSize={{ xs: 18, sm: 20, md: 23 }} fontWeight="100">Verified Quality</Typography>
                     </Box>
 
-                    <Box sx={{ display: "flex", alignItems: "center", gap: 3 }}>
-                        <SupportAgentIcon sx={{ fontSize: "45px" }} />
-                        <Typography variant="body1" fontSize={23} fontWeight="100">24/7 Support</Typography>
+                    <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+                        <SupportAgentIcon sx={{ fontSize: { xs: 24, sm: 30, md: 45 } }} />
+                        <Typography variant="body1" fontSize={{ xs: 18, sm: 20, md: 23 }} fontWeight="100">24/7 Support</Typography>
                     </Box>
                 </Stack>
             </Box>
 
-            <Stack direction="row" flexWrap="wrap" maxWidth={"100%"} gap={1} mt={15} justifyContent="center">
-                <Box width={"50%"} sx={{ position: "relative" }}>
+            <Stack direction={{ xs: "column", md: "column", lg: "row" }} alignItems={'center'} flexWrap="wrap" maxWidth={"100%"} gap={1} mt={15} justifyContent="center">
+                <Box width="50%" sx={{ position: "relative", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <Card
                         sx={{
-                            width: 500,
-                            height: 500,
                             position: "relative",
                             backgroundColor: "#35589A",
                             borderRadius: "50%",
+                            overflow: "hidden",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
-                            overflow: "hidden",
+                            width: { xs: 150, sm: 230, md: 380, lg: 420 },
+                            height: { xs: 150, sm: 230, md: 380, lg: 420 },
+                            maxWidth: "100%",
                         }}
                     >
                         <Box
@@ -74,8 +75,12 @@ function Offer() {
                     </Card>
                     <Box
                         sx={{
-                            width: 120,
-                            height: 120,
+                            width: { xs: 60, sm: 80, md: 120 },
+                            height: { xs: 60, sm: 80, md: 120 },
+                            position: "absolute",
+                            top: { xs: 15, sm: 20, md: 30 },
+                            left: "30%",
+                            transform: "translateX(-70%)",
                             borderRadius: "50%",
                             color: "white",
                             fontWeight: "bold",
@@ -83,53 +88,51 @@ function Offer() {
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
-                            position: "absolute",
-                            top: 30,
-                            left: 20,
+                            padding: { xs: 1, sm: 2, md: 3 },
                         }}
                     >
-                        <Typography variant="body1" fontSize={35} pl={4} >20% Off</Typography>
+                        <Typography variant="body1" fontSize={{ xs: 15, sm: 20, md: 35 }}>20% Off</Typography>
                     </Box>
                 </Box>
 
-                <Box textAlign={"center"} display={'flex'} mb={10} flexDirection={"column"} justifyContent={"space-between"}>
-                    <Typography variant="h4" mt={"60px"} color="initial">Exclusive Offer</Typography>
+                <Box textAlign={"center"} display={'flex'} flexDirection={"column"} justifyContent={"space-evenly"}>
+                    <Typography variant="h4" mt={"60px"} mb={8} >Exclusive Offer</Typography>
                     <Box>
-                        <Typography variant="body1" mb={3} color="initial">Offer ends in</Typography>
+                        <Typography variant="body1" fontSize={18} mb={3} >Offer ends in</Typography>
                         <Stack direction="row" justifyContent="center" gap={2} mb={1}>
                             <Stack spacing={0.5} alignItems="center">
                                 <Box sx={timerBoxSx}>02</Box>
-                                <Typography variant="caption" color="#370665" fontSize={20}>
+                                <Typography variant="caption" color="text.offer" fontSize={20}>
                                     Hours
                                 </Typography>
                             </Stack>
 
                             <Stack spacing={0.5} alignItems="center">
                                 <Box sx={timerBoxSx}>38</Box>
-                                <Typography variant="caption" color="#370665" fontSize={20}>
+                                <Typography variant="caption" color="text.offer" fontSize={20}>
                                     Minutes
                                 </Typography>
                             </Stack>
 
                             <Stack spacing={0.5} alignItems="center">
                                 <Box sx={timerBoxSx}>49</Box>
-                                <Typography variant="caption" color="#370665" fontSize={20}>
+                                <Typography variant="caption" color="text.offer" fontSize={20}>
                                     Seconds
                                 </Typography>
                             </Stack>
                         </Stack>
                     </Box>
-                    <Stack direction={"row"} gap={2}>
-                        <Button variant="outlined" color="primary" sx={{ width: "160px", height: "40px", textTransform: "lowercase", fontSize: "15px", borderRadius: "10px", boxShadow: "0px 0px 10px #F14A16" }}>
+                    <Stack direction={"row"} mt={8} gap={2}>
+                        <Button variant="outlined" color="primary" sx={{ borderRadius: "10px", boxShadow: "0px 0px 10px #F14A16" }}>
                             view in details
                         </Button>
-                        <Button variant="contained" color="primary" sx={{ width: "160px", height: "40px", textTransform: "lowercase", fontSize: "15px", borderRadius: "10px", boxShadow: "0px 0px 10px #F14A16" }}>
+                        <Button variant="contained" color="primary" sx={{ borderRadius: "10px", boxShadow: "0px 0px 10px #F14A16" }}>
                             Shop now
                         </Button>
                     </Stack>
                 </Box>
-            </Stack>
-        </Box>
+            </Stack >
+        </Box >
     )
 }
 
