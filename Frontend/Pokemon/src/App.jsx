@@ -15,7 +15,7 @@ import Signup from "./Signup.jsx";
 import { lightTheme, darkTheme } from "./Theme.jsx";
 
 function HomePage({ isDarkMode, scrollToRefs, onToggleTheme }) {
-  const {  exploreRef, contactRef } = scrollToRefs;
+  const { exploreRef, contactRef } = scrollToRefs;
 
   return (
     <>
@@ -33,7 +33,7 @@ function HomePage({ isDarkMode, scrollToRefs, onToggleTheme }) {
         }}
       >
         <Box >
-          <HeroSection isDarkMode={isDarkMode} />
+          <HeroSection />
         </Box>
 
         <Trend />
@@ -70,7 +70,7 @@ function App() {
   }, [isDarkMode]);
 
   const handleToggleTheme = () => {
-    setIsDarkMode((prev) => !prev);
+    setIsDarkMode(prev => !prev);
   };
 
   return (
@@ -83,7 +83,7 @@ function App() {
             element={
               <HomePage
                 isDarkMode={isDarkMode}
-                scrollToRefs={{exploreRef, contactRef }}
+                scrollToRefs={{ exploreRef, contactRef }}
                 onToggleTheme={handleToggleTheme}
               />
             }
