@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ThemeProvider, CssBaseline, Box } from "@mui/material";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Navbar from "./Navbar";
 import HeroSection from "./HeroSection";
 import Trend from "./Trend";
@@ -7,60 +9,90 @@ import Offer from "./Offer";
 import TryOut from "./TryOut";
 import NewArrivals from "./NewArrivals";
 import Qr from "./Qr";
+import Login from "./Login.jsx";
+import Signup from "./Signup.jsx";
+
 import { lightTheme, darkTheme } from "./Theme.jsx";
 
-function App() {
-  const [isDarkmode, setIsDarkmode] = useState(() => {
-    return localStorage.getItem("theme") === "dark";
-  });
-
-  const homeRef = useRef(null);
-  const exploreRef = useRef(null);
-  const contactRef = useRef(null);
-
-  useEffect(() => {
-    localStorage.setItem("theme", isDarkmode ? "dark" : "light");
-  }, [isDarkmode]);
-
-  const scrollTo = (ref) => ref.current?.scrollIntoView({ behavior: "smooth" });
+function HomePage({ isDarkMode, scrollToRefs, onToggleTheme }) {
+  const {  exploreRef, contactRef } = scrollToRefs;
 
   return (
-    <ThemeProvider theme={isDarkmode ? darkTheme : lightTheme}>
-      <CssBaseline />
-
+    <>
       <Navbar
-        isDarkMode={isDarkmode}
-        onToggleTheme={() => setIsDarkmode((prev) => !prev)}
-        onScrolltoHome={() => scrollTo(homeRef)}
+        isDarkMode={isDarkMode}
+        onToggleTheme={onToggleTheme}
         onScrolltoExplore={() => scrollTo(exploreRef)}
         onScrolltoContactUs={() => scrollTo(contactRef)}
       />
-
       <Box
         sx={{
-          background: isDarkmode
+          background: isDarkMode
             ? "radial-gradient(circle at left, rgb(43, 29, 78) 0%, rgb(0, 0, 0) 100%)"
             : "#fff",
         }}
       >
-        <Box ref={homeRef}>
-          <HeroSection isDarkmode={isDarkmode} />
+        <Box >
+          <HeroSection isDarkMode={isDarkMode} />
+        </Box>
+
+        <Trend />
+
+        <Box ref={exploreRef}>
+          <Offer />
+        </Box>
+
+        <TryOut />
+        <NewArrivals />
+
+        <Box ref={contactRef}>
+          <Qr />
         </Box>
       </Box>
+    </>
+  );
+}
 
-      <Trend />
+function scrollTo(ref) {
+  ref.current?.scrollIntoView({ behavior: "smooth" });
+}
 
-      <Box ref={exploreRef}>
-        <Offer />
-      </Box>
+function App() {
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    return localStorage.getItem("theme") === "dark";
+  });
 
-      <TryOut />
-      <NewArrivals />
+  const exploreRef = useRef(null);
+  const contactRef = useRef(null);
 
-      <Box ref={contactRef}>
-        <Qr />
-      </Box>
-    </ThemeProvider>
+  useEffect(() => {
+    localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+  }, [isDarkMode]);
+
+  const handleToggleTheme = () => {
+    setIsDarkMode((prev) => !prev);
+  };
+
+  return (
+    <BrowserRouter>
+      <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+        <CssBaseline />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <HomePage
+                isDarkMode={isDarkMode}
+                scrollToRefs={{exploreRef, contactRef }}
+                onToggleTheme={handleToggleTheme}
+              />
+            }
+          />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+        </Routes>
+      </ThemeProvider>
+    </BrowserRouter>
   );
 }
 

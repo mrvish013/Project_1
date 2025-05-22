@@ -1,14 +1,19 @@
 import React from "react";
+
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import { Box, Button, Chip, IconButton, Stack } from "@mui/material";
+
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+
+import { Link } from "react-router-dom";
+
 import logo from "./assets/Logo.png";
 
-function Navbar({ onToggleTheme, isDarkMode, onScrolltoExplore,onScrolltoContactUs , onScrolltohome}) {
+function Navbar({ onToggleTheme, isDarkMode, onScrolltoExplore, onScrolltoContactUs, onScrolltohome }) {
     return (
         <AppBar position="static" sx={{ backgroundColor: "background.paper", color: "text.primary", boxShadow: "none" }}>
             <Toolbar
@@ -52,9 +57,16 @@ function Navbar({ onToggleTheme, isDarkMode, onScrolltoExplore,onScrolltoContact
 
                     <IconButton sx={{ color: "text.primary" }}><SearchIcon /></IconButton>
                     <IconButton sx={{ color: "text.primary" }}><ShoppingCartIcon /></IconButton>
-                    <Button variant="outlined" color="primary" sx={{ borderRadius: 3, fontWeight: 600 }}>
-                        Login
-                    </Button>
+                    <Link  to="/login">
+                        <Button variant="outlined" color="primary" sx={{ borderRadius: 3, fontWeight: 600 }}>
+                            Login
+                        </Button>
+                    </Link>
+                    <Link  to="/signup">
+                        <Button variant="outlined" color="primary" sx={{ borderRadius: 3, fontWeight: 600 }}>
+                            Sign up
+                        </Button>
+                    </Link>
                 </Box>
             </Toolbar>
         </AppBar>
